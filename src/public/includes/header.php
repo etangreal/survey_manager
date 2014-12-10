@@ -1,5 +1,5 @@
 <header>
-	<h1 class="logo">Genioo Surveys</h1>
+	<h1 class="logo">Survey Manager</h1>
 
 	<?php include 'includes/navigation.php' ?>
 

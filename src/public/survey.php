@@ -13,7 +13,7 @@
 
 		save_survey($surveyID,$username,$questions,$answers);
 
-		header('Location: surveyS.php?username='.$username);
+		header('Location: surveys.php?username='.$username);
 		die();
 	}
 

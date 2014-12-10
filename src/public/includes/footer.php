@@ -1,3 +1,3 @@
 <footer>
-	&copy; bla bla bla ... All rights reserved.
+	Survey Manager
 </footer>

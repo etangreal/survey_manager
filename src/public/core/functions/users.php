@@ -1,5 +1,9 @@
 <?php
 
+	function is_admin() {
+		return ( isset($user_data['level']) && ($user_data['level'] == 1) );
+	}
+
 	function user_data($username) {
 		global $conn;
 
