@@ -1,0 +1,89 @@
+
+# -------------------------------------------------------------------------------------------------
+# PHP TUTORIALS
+# -------------------------------------------------------------------------------------------------
+
+	thenewboston.com/videos.php?cat=74&video=19654
+	phpacademy.org/videos/blog
+
+
+# -------------------------------------------------------------------------------------------------
+# PHP RESTful WebServices
+# -------------------------------------------------------------------------------------------------
+
+	sitepoint.com/best-practices-rest-api-scratch-introduction
+
+# -------------------------------------------------------------------------------------------------
+# VAGRANT & LAMP STACK | SEARCH: Vagrant lamp stack
+# -------------------------------------------------------------------------------------------------
+
+	Introducing Scotch Box – A Vagrant LAMP Stack That Just Works
+		scotch.io/bar-talk/introducing-scotch-box-a-vagrant-lamp-stack-that-just-works
+			github.com/scotch-io/scotch-box
+
+		scotch.io/tutorials/get-vagrant-up-and-running-in-no-time
+			sequelpro.com
+			navicat.com
+
+# -------------------------------------------------------------------------------------------------
+# PHP-MY-ADMIN
+# -------------------------------------------------------------------------------------------------
+
+	scotch.io/tutorials/get-vagrant-up-and-running-in-no-time
+		sequelpro.com
+
+	How to install and secure php-my-admin on ubuntu 14.04
+		digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-ubuntu-14-04
+
+		sudo apt-get update
+		sudo apt-get install -y phpmyadmin
+
+		sudo php5enmod mcrypt
+
+		sudo service apache2 restart
+
+		http://192.168.33.10/phpmyadmin
+
+# -------------------------------------------------------------------------------------------------
+# DOCKER HOSTING
+# -------------------------------------------------------------------------------------------------
+
+	Tutum
+		tutum.co
+		tutum.co/how
+		learn.tutum.co
+
+	tutum-docker-lamp
+		github.com/tutumcloud/tutum-docker-lamp
+
+# -------------------------------------------------------------------------------------------------
+# VAGRANT & UBUNTU & DOCKER
+# -------------------------------------------------------------------------------------------------
+
+	Phusion Vagrant Docker Boxes
+		github.com/phusion/open-vagrant-boxes
+
+	Vagrant with Docker: How to set up Postgres, Elasticsearch and Redis on Mac OS X
+		maori.geek.nz/post/vagrant_with_docker_how_to_set_up_postgres_elasticsearch_and_redis_on_mac_os_x
+			github.com/fgrehm/docker-provider#limitations
+
+	_______________________________________________________________________________________________
+	JAVA
+		Docker & Vagrant ( HelloWorldServer.java )
+			blog.zenika.com/index.php?post/2014/10/07/Setting-up-a-development-environment-using-Docker-and-Vagrant
+
+		Deploy Java Apps With Docker = Awesome
+			blogs.atlassian.com/2013/06/deploy-java-apps-with-docker-awesome
+
+	_______________________________________________________________________________________________
+	OTHER
+
+		Vagrant Cloud
+			vagrantcloud.com/discover/popular
+
+		Vagrant Base Box - Ubuntu 14.04
+			aruizca.com/steps-to-create-a-vagrant-base-box-with-ubuntu-14-04-desktop-gui-and-virtualbox
+
+# -------------------------------------------------------------------------------------------------
+# END
+# -------------------------------------------------------------------------------------------------

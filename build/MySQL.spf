@@ -1,0 +1,880 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ContentFilters</key>
+	<dict/>
+	<key>auto_connect</key>
+	<true/>
+	<key>data</key>
+	<dict>
+		<key>connection</key>
+		<dict>
+			<key>database</key>
+			<string>Survey</string>
+			<key>host</key>
+			<string>127.0.0.1</string>
+			<key>name</key>
+			<string>scotchbox</string>
+			<key>rdbms_type</key>
+			<string>mysql</string>
+			<key>ssh_host</key>
+			<string>192.168.33.10</string>
+			<key>ssh_keyLocation</key>
+			<string>~/.vagrant.d/insecure_private_key</string>
+			<key>ssh_keyLocationEnabled</key>
+			<integer>0</integer>
+			<key>ssh_user</key>
+			<string>vagrant</string>
+			<key>sslCACertFileLocation</key>
+			<string></string>
+			<key>sslCACertFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>sslCertificateFileLocation</key>
+			<string></string>
+			<key>sslCertificateFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>sslKeyFileLocation</key>
+			<string>~/.vagrant.d/insecure_private_key</string>
+			<key>sslKeyFileLocationEnabled</key>
+			<integer>1</integer>
+			<key>type</key>
+			<string>SPSSHTunnelConnection</string>
+			<key>useSSL</key>
+			<integer>1</integer>
+			<key>user</key>
+			<string>root</string>
+		</dict>
+		<key>session</key>
+		<dict>
+			<key>connectionEncoding</key>
+			<string>latin1</string>
+			<key>contentPageNumber</key>
+			<integer>1</integer>
+			<key>contentSelection</key>
+			<data>
+			YnBsaXN0MDDUAQIDBAUGNjdYJHZlcnNpb25YJG9iamVjdHNZJGFy
+			Y2hpdmVyVCR0b3ASAAGGoK0HCBUWFxgZHSQoLDA0VSRudWxs0wkK
+			CwwQFFdOUy5rZXlzWk5TLm9iamVjdHNWJGNsYXNzow0OD4ACgAOA
+			BKMREhOABYAGgAiADFR0eXBlVHJvd3NUa2V5c18QJlNlbGVjdGlv
+			bkRldGFpbFR5cGVQcmltYXJ5S2V5ZWREZXRhaWxz0wkKCxobHKCg
+			gAfSHh8gIVokY2xhc3NuYW1lWCRjbGFzc2VzXxATTlNNdXRhYmxl
+			RGljdGlvbmFyeaMgIiNcTlNEaWN0aW9uYXJ5WE5TT2JqZWN00goL
+			JSehJoAJgAvSCykqK1lOUy5zdHJpbmeAClV2YWx1ZdIeHy0uXxAP
+			TlNNdXRhYmxlU3RyaW5noy0vI1hOU1N0cmluZ9IeHzEyXk5TTXV0
+			YWJsZUFycmF5ozEzI1dOU0FycmF50h4fIjWiIiNfEA9OU0tleWVk
+			QXJjaGl2ZXLRODlUZGF0YYABAAgAEQAaACMALQAyADcARQBLAFIA
+			WgBlAGwAcAByAHQAdgB6AHwAfgCAAIIAhwCMAJEAugDBAMIAwwDF
+			AMoA1QDeAPQA+AEFAQ4BEwEVARcBGQEeASgBKgEwATUBRwFLAVQB
+			WQFoAWwBdAF5AXwBjgGRAZYAAAAAAAACAQAAAAAAAAA6AAAAAAAA
+			AAAAAAAAAAABmA==
+			</data>
+			<key>contentSortColIsAsc</key>
+			<true/>
+			<key>contentViewport</key>
+			<string>{{0, 0}, {693, 456}}</string>
+			<key>isToolbarVisible</key>
+			<true/>
+			<key>queries</key>
+			<string>
+CREATE DATABASE IF NOT EXISTS Survey;
+USE Survey;
+
+DROP TABLE IF EXISTS SurveyAnswers;
+DROP TABLE IF EXISTS Survey;
+DROP TABLE IF EXISTS SignIn;
+DROP TABLE IF EXISTS Answers;
+DROP TABLE IF EXISTS Questions;
+
+CREATE TABLE IF NOT EXISTS Questions (
+	questionID			VARCHAR(50)		NOT NULL,
+	questionsText_EN 	VARCHAR(255)	NOT NULL,
+
+	created				TIMESTAMP		NOT NULL 		DEFAULT CURRENT_TIMESTAMP,
+
+	PRIMARY KEY (questionID)
+);
+
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('3KFSJT4B7L','The color "black" is a safe choice when it comes to clothes.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('MBMNCXEXGV','If I had the choice between an Audi R8 and a Ford Shelby GT500, I would take the Audi.');
+/* INSERT INTO Questions (questionID,questionsText_EN) VALUES ('8ZP3PPSDWC','I prefer gaming on a console over gaming on a PC.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('88BUB92M6A','I like to watch cat videos on Youtube.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('ZVZG2D2JYF',"Without sports I don't feel comfortable.");
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('WFVR8GWPR4','Large meals for lunch make me tired.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('USXC6B36P7','I prefer holidays in the mountains over holidays on the beach.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('E3ATDJGBAW','Chocolate makes my day.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('XUT7EX893B','I REALLY like to watch cat videos on Youtube.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('4T9VHX7VUU',"Schrödinger's cat is still alive."); */
+
+-- SELECT * FROM Questions;
+-- SELECT * FROM `Questions` ORDER BY `created`
+
+CREATE TABLE IF NOT EXISTS Answers (
+	value				TINYINT			NOT NULL,
+	text 				VARCHAR(255)	NOT NULL,
+
+	PRIMARY KEY (value)
+);
+
+-- INSERT INTO Answers (value,text) VALUES (0,'UNANSWERED');
+INSERT INTO Answers (value,text) VALUES (1,'strongly disagree');
+INSERT INTO Answers (value,text) VALUES (2,'disagree');
+INSERT INTO Answers (value,text) VALUES (3,'partly agree / disagree');
+INSERT INTO Answers (value,text) VALUES (4,'agree');
+INSERT INTO Answers (value,text) VALUES (5,'strongly agree');
+
+-- SELECT * FROM Answers;
+-- SELECT * FROM `Answers` ORDER BY `value`
+
+CREATE TABLE IF NOT EXISTS SignIn (
+	username			VARCHAR(50)		NOT NULL,
+	password 			VARCHAR(50)		NOT NULL,
+
+	level				TINYINT			NOT NULL 		DEFAULT 0, -- 0=user, 1=admin
+
+	PRIMARY KEY (username)
+);
+
+INSERT INTO SignIn (username,password,level) VALUES ('admin','admin', 1);
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.SKDF7','3ZL4CYDWBL');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.KLDFD','RWXX9DETSM');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.67FDS','2M8CDMTGC5');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.7LKD8','MW7H38T2SE');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.LKD88','G3MNAULVKB');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.ASD9F','8774ZE5E89');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.MNC56','C8UE54QBZP');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.LSNV3','3PE8EDZTV5');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.DDVV2','Y55WPRBVUZ');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.NXCXD','MK4DV8NLPP');
+
+-- SELECT * FROM SignIn;
+
+CREATE TABLE IF NOT EXISTS Survey (
+	surveyID			VARCHAR(50)		NOT NULL,
+	username			VARCHAR(50)		NOT NULL,
+
+	started				DATETIME 			NULL		DEFAULT NULL,
+	finished			DATETIME 			NULL		DEFAULT NULL,
+
+	created				TIMESTAMP		NOT NULL 		DEFAULT CURRENT_TIMESTAMP,
+ 
+	PRIMARY KEY (surveyID),
+	FOREIGN KEY (username) REFERENCES SignIn(username)
+);
+
+-- INSERT INTO `Survey` SET surveyID = "123", username = "GWSSam.SKDF7"
+-- INSERT INTO `Survey` SET surveyID = '54872ffed76c9', username = '.GWSSam.SKDF7'
+
+-- SELECT * FROM Survey;
+-- SELECT * FROM `Survey` WHERE `username` = 'GWSSam.67FDS' AND finished IS NULL ORDER BY `created`
+
+CREATE TABLE IF NOT EXISTS SurveyAnswers (
+	surveyID			VARCHAR(50)		NOT NULL,
+	questionID			VARCHAR(50)		NOT NULL,
+	value				TINYINT			NOT NULL,
+
+	PRIMARY KEY (surveyID, questionID),
+	FOREIGN KEY (surveyID) REFERENCES Survey(surveyID),
+	FOREIGN KEY (questionID) REFERENCES Questions(questionID),
+	FOREIGN KEY (value) REFERENCES Answers(value)
+);
+
+-- INSERT INTO `SurveyAnswers` SET surveyID = '5487b87cbe589', questionID = '3KFSJT4B7L', value = 1
+
+-- SELECT * FROM SurveyAnswers;
+-- SELECT * FROM `SignIn`
+
+-- DELETE FROM SurveyAnswers;
+
+</string>
+			<key>table</key>
+			<string>Answers</string>
+			<key>view</key>
+			<string>SP_VIEW_CUSTOMQUERY</string>
+			<key>windowVerticalDividerPosition</key>
+			<real>202</real>
+		</dict>
+	</dict>
+	<key>encrypted</key>
+	<false/>
+	<key>format</key>
+	<string>connection</string>
+	<key>queryFavorites</key>
+	<array/>
+	<key>queryHistory</key>
+	<array>
+		<string>SELECT * FROM `Survey` WHERE `username` = 'GWSSam.67FDS' AND finished IS NULL ORDER BY `created`</string>
+		<string>SELECT * FROM `Survey` WHERE `username` = 'GWSSam.67FDS' AND finished = NULL ORDER BY `created`</string>
+		<string>CREATE DATABASE IF NOT EXISTS Survey;
+USE Survey;
+DROP TABLE IF EXISTS SurveyAnswers;
+DROP TABLE IF EXISTS Survey;
+DROP TABLE IF EXISTS SignIn;
+DROP TABLE IF EXISTS Answers;
+DROP TABLE IF EXISTS Questions;
+CREATE TABLE IF NOT EXISTS Questions (
+	questionID			VARCHAR(50)		NOT NULL,
+	questionsText_EN 	VARCHAR(255)	NOT NULL,
+
+	created				TIMESTAMP		NOT NULL 		DEFAULT CURRENT_TIMESTAMP,
+
+	PRIMARY KEY (questionID)
+);
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('3KFSJT4B7L','The color "black" is a safe choice when it comes to clothes.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('MBMNCXEXGV','If I had the choice between an Audi R8 and a Ford Shelby GT500, I would take the Audi.');
+/* INSERT INTO Questions (questionID,questionsText_EN) VALUES ('8ZP3PPSDWC','I prefer gaming on a console over gaming on a PC.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('88BUB92M6A','I like to watch cat videos on Youtube.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('ZVZG2D2JYF',"Without sports I don't feel comfortable.");
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('WFVR8GWPR4','Large meals for lunch make me tired.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('USXC6B36P7','I prefer holidays in the mountains over holidays on the beach.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('E3ATDJGBAW','Chocolate makes my day.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('XUT7EX893B','I REALLY like to watch cat videos on Youtube.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('4T9VHX7VUU',"Schrödinger's cat is still alive."); */
+
+-- SELECT * FROM Questions;
+-- SELECT * FROM `Questions` ORDER BY `created`
+
+CREATE TABLE IF NOT EXISTS Answers (
+	value				TINYINT			NOT NULL,
+	text 				VARCHAR(255)	NOT NULL,
+
+	PRIMARY KEY (value)
+);
+-- INSERT INTO Answers (value,text) VALUES (0,'UNANSWERED');
+INSERT INTO Answers (value,text) VALUES (1,'strongly disagree');
+INSERT INTO Answers (value,text) VALUES (2,'disagree');
+INSERT INTO Answers (value,text) VALUES (3,'partly agree / disagree');
+INSERT INTO Answers (value,text) VALUES (4,'agree');
+INSERT INTO Answers (value,text) VALUES (5,'strongly agree');
+-- SELECT * FROM Answers;
+-- SELECT * FROM `Answers` ORDER BY `value`
+
+CREATE TABLE IF NOT EXISTS SignIn (
+	username			VARCHAR(50)		NOT NULL,
+	password 			VARCHAR(50)		NOT NULL,
+
+	PRIMARY KEY (username)
+);
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.SKDF7','3ZL4CYDWBL');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.KLDFD','RWXX9DETSM');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.67FDS','2M8CDMTGC5');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.7LKD8','MW7H38T2SE');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.LKD88','G3MNAULVKB');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.ASD9F','8774ZE5E89');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.MNC56','C8UE54QBZP');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.LSNV3','3PE8EDZTV5');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.DDVV2','Y55WPRBVUZ');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.NXCXD','MK4DV8NLPP');
+-- SELECT * FROM SignIn;
+
+CREATE TABLE IF NOT EXISTS Survey (
+	surveyID			VARCHAR(50)		NOT NULL,
+	username			VARCHAR(50)		NOT NULL,
+
+	started				DATETIME 			NULL		DEFAULT NULL,
+	finished			DATETIME 			NULL		DEFAULT NULL,
+
+	created				TIMESTAMP		NOT NULL 		DEFAULT CURRENT_TIMESTAMP,
+ 
+	PRIMARY KEY (surveyID),
+	FOREIGN KEY (username) REFERENCES SignIn(username)
+);
+-- INSERT INTO `Survey` SET surveyID = "123", username = "GWSSam.SKDF7"
+-- INSERT INTO `Survey` SET surveyID = '54872ffed76c9', username = '.GWSSam.SKDF7'
+
+-- SELECT * FROM Survey;
+-- SELECT * FROM `Survey` WHERE `username` = 'GWSSam.SKDF7' ORDER BY `created`
+
+CREATE TABLE IF NOT EXISTS SurveyAnswers (
+	surveyID			VARCHAR(50)		NOT NULL,
+	questionID			VARCHAR(50)		NOT NULL,
+	value				TINYINT			NOT NULL,
+
+	PRIMARY KEY (surveyID, questionID),
+	FOREIGN KEY (surveyID) REFERENCES Survey(surveyID),
+	FOREIGN KEY (questionID) REFERENCES Questions(questionID),
+	FOREIGN KEY (value) REFERENCES Answers(value)
+);
+-- INSERT INTO `SurveyAnswers` SET surveyID = '5487b87cbe589', questionID = '3KFSJT4B7L', value = 1
+
+-- SELECT * FROM SurveyAnswers;
+-- SELECT * FROM `SignIn`
+
+-- DELETE FROM SurveyAnswers;</string>
+		<string>SELECT * FROM Survey</string>
+		<string>CREATE DATABASE IF NOT EXISTS Survey;
+USE Survey;
+DROP TABLE IF EXISTS SurveyAnswers;
+DROP TABLE IF EXISTS Survey;
+DROP TABLE IF EXISTS SignIn;
+DROP TABLE IF EXISTS Answers;
+DROP TABLE IF EXISTS Questions;
+CREATE TABLE IF NOT EXISTS Questions (
+	questionID			VARCHAR(50)		NOT NULL,
+	questionsText_EN 	VARCHAR(255)	NOT NULL,
+
+	created				TIMESTAMP		NOT NULL 		DEFAULT CURRENT_TIMESTAMP,
+
+	PRIMARY KEY (questionID)
+);
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('3KFSJT4B7L','The color "black" is a safe choice when it comes to clothes.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('MBMNCXEXGV','If I had the choice between an Audi R8 and a Ford Shelby GT500, I would take the Audi.');
+/* INSERT INTO Questions (questionID,questionsText_EN) VALUES ('8ZP3PPSDWC','I prefer gaming on a console over gaming on a PC.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('88BUB92M6A','I like to watch cat videos on Youtube.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('ZVZG2D2JYF',"Without sports I don't feel comfortable.");
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('WFVR8GWPR4','Large meals for lunch make me tired.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('USXC6B36P7','I prefer holidays in the mountains over holidays on the beach.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('E3ATDJGBAW','Chocolate makes my day.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('XUT7EX893B','I REALLY like to watch cat videos on Youtube.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('4T9VHX7VUU',"Schrödinger's cat is still alive."); */
+
+-- SELECT * FROM Questions;
+-- SELECT * FROM `Questions` ORDER BY `created`
+
+CREATE TABLE IF NOT EXISTS Answers (
+	value				TINYINT			NOT NULL,
+	text 				VARCHAR(255)	NOT NULL,
+
+	PRIMARY KEY (value)
+);
+-- INSERT INTO Answers (value,text) VALUES (0,'UNANSWERED');
+INSERT INTO Answers (value,text) VALUES (1,'strongly disagree');
+INSERT INTO Answers (value,text) VALUES (2,'disagree');
+INSERT INTO Answers (value,text) VALUES (3,'partly agree / disagree');
+INSERT INTO Answers (value,text) VALUES (4,'agree');
+INSERT INTO Answers (value,text) VALUES (5,'strongly agree');
+-- SELECT * FROM Answers;
+-- SELECT * FROM `Answers` ORDER BY `value`
+
+CREATE TABLE IF NOT EXISTS SignIn (
+	username			VARCHAR(50)		NOT NULL,
+	password 			VARCHAR(50)		NOT NULL,
+
+	PRIMARY KEY (username)
+);
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.SKDF7','3ZL4CYDWBL');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.KLDFD','RWXX9DETSM');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.67FDS','2M8CDMTGC5');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.7LKD8','MW7H38T2SE');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.LKD88','G3MNAULVKB');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.ASD9F','8774ZE5E89');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.MNC56','C8UE54QBZP');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.LSNV3','3PE8EDZTV5');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.DDVV2','Y55WPRBVUZ');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.NXCXD','MK4DV8NLPP');
+-- SELECT * FROM SignIn;
+
+CREATE TABLE IF NOT EXISTS Survey (
+	surveyID			VARCHAR(50)		NOT NULL,
+	username			VARCHAR(50)		NOT NULL,
+
+	started				DATETIME 			NULL		DEFAULT '00-00-0000 00:00:00',
+	finished			DATETIME 			NULL		DEFAULT '00-00-0000 00:00:00',
+
+	created				TIMESTAMP		NOT NULL 		DEFAULT CURRENT_TIMESTAMP,
+ 
+	PRIMARY KEY (surveyID),
+	FOREIGN KEY (username) REFERENCES SignIn(username)
+);
+-- INSERT INTO `Survey` SET surveyID = "123", username = "GWSSam.SKDF7"
+-- INSERT INTO `Survey` SET surveyID = '54872ffed76c9', username = '.GWSSam.SKDF7'
+
+-- SELECT * FROM Survey;
+-- SELECT * FROM `Survey` WHERE `username` = 'GWSSam.SKDF7' ORDER BY `created`
+
+CREATE TABLE IF NOT EXISTS SurveyAnswers (
+	surveyID			VARCHAR(50)		NOT NULL,
+	questionID			VARCHAR(50)		NOT NULL,
+	value				TINYINT			NOT NULL,
+
+	PRIMARY KEY (surveyID, questionID),
+	FOREIGN KEY (surveyID) REFERENCES Survey(surveyID),
+	FOREIGN KEY (questionID) REFERENCES Questions(questionID),
+	FOREIGN KEY (value) REFERENCES Answers(value)
+);
+-- INSERT INTO `SurveyAnswers` SET surveyID = '5487b87cbe589', questionID = '3KFSJT4B7L', value = 1
+
+-- SELECT * FROM SurveyAnswers;
+-- SELECT * FROM `SignIn`
+
+-- DELETE FROM SurveyAnswers;</string>
+		<string>SELECT * FROM SurveyAnswers</string>
+		<string>DELETE FROM SurveyAnswers</string>
+		<string>INSERT INTO `SurveyAnswers` SET surveyID = '5487b87cbe589', questionID = '3KFSJT4B7L', value = 1</string>
+		<string>INSERT INTO `SurveyAnswers` SET surveyID = 5487b87cbe589, questionID = 3KFSJT4B7L, value = 1</string>
+		<string>SELECT * FROM SurveyAnswer</string>
+		<string>CREATE DATABASE IF NOT EXISTS Survey;
+USE Survey;
+DROP TABLE IF EXISTS SurveyAnswers;
+DROP TABLE IF EXISTS Survey;
+DROP TABLE IF EXISTS SignIn;
+DROP TABLE IF EXISTS Answers;
+DROP TABLE IF EXISTS Questions;
+CREATE TABLE IF NOT EXISTS Questions (
+	questionID			VARCHAR(50)		NOT NULL,
+	questionsText_EN 	VARCHAR(255)	NOT NULL,
+
+	created				TIMESTAMP		NOT NULL 		DEFAULT CURRENT_TIMESTAMP,
+
+	PRIMARY KEY (questionID)
+);
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('3KFSJT4B7L','The color "black" is a safe choice when it comes to clothes.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('MBMNCXEXGV','If I had the choice between an Audi R8 and a Ford Shelby GT500, I would take the Audi.');
+/* INSERT INTO Questions (questionID,questionsText_EN) VALUES ('8ZP3PPSDWC','I prefer gaming on a console over gaming on a PC.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('88BUB92M6A','I like to watch cat videos on Youtube.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('ZVZG2D2JYF',"Without sports I don't feel comfortable.");
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('WFVR8GWPR4','Large meals for lunch make me tired.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('USXC6B36P7','I prefer holidays in the mountains over holidays on the beach.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('E3ATDJGBAW','Chocolate makes my day.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('XUT7EX893B','I REALLY like to watch cat videos on Youtube.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('4T9VHX7VUU',"Schrödinger's cat is still alive."); */
+
+-- SELECT * FROM Questions;
+-- SELECT * FROM `Questions` ORDER BY `created`
+
+CREATE TABLE IF NOT EXISTS Answers (
+	value				TINYINT			NOT NULL,
+	text 				VARCHAR(255)	NOT NULL,
+
+	PRIMARY KEY (value)
+);
+-- INSERT INTO Answers (value,text) VALUES (0,'UNANSWERED');
+INSERT INTO Answers (value,text) VALUES (1,'strongly disagree');
+INSERT INTO Answers (value,text) VALUES (2,'disagree');
+INSERT INTO Answers (value,text) VALUES (3,'partly agree / disagree');
+INSERT INTO Answers (value,text) VALUES (4,'agree');
+INSERT INTO Answers (value,text) VALUES (5,'strongly agree');
+-- SELECT * FROM Answers;
+-- SELECT * FROM `Answers` ORDER BY `value`
+
+CREATE TABLE IF NOT EXISTS SignIn (
+	username			VARCHAR(50)		NOT NULL,
+	password 			VARCHAR(50)		NOT NULL,
+
+	PRIMARY KEY (username)
+);
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.SKDF7','3ZL4CYDWBL');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.KLDFD','RWXX9DETSM');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.67FDS','2M8CDMTGC5');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.7LKD8','MW7H38T2SE');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.LKD88','G3MNAULVKB');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.ASD9F','8774ZE5E89');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.MNC56','C8UE54QBZP');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.LSNV3','3PE8EDZTV5');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.DDVV2','Y55WPRBVUZ');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.NXCXD','MK4DV8NLPP');
+-- SELECT * FROM SignIn;
+
+CREATE TABLE IF NOT EXISTS Survey (
+	surveyID			VARCHAR(50)		NOT NULL,
+	username			VARCHAR(50)		NOT NULL,
+
+	started				DATETIME 			NULL		DEFAULT '00-00-0000 00:00:00',
+	finished			DATETIME 			NULL		DEFAULT '00-00-0000 00:00:00',
+
+	created				TIMESTAMP		NOT NULL 		DEFAULT CURRENT_TIMESTAMP,
+ 
+	PRIMARY KEY (surveyID),
+	FOREIGN KEY (username) REFERENCES SignIn(username)
+);
+-- INSERT INTO `Survey` SET surveyID = "123", username = "GWSSam.SKDF7"
+-- INSERT INTO `Survey` SET surveyID = '54872ffed76c9', username = '.GWSSam.SKDF7'
+
+-- SELECT * FROM Survey;
+-- SELECT * FROM `Survey` WHERE `username` = 'GWSSam.SKDF7' ORDER BY `created`
+
+
+CREATE TABLE IF NOT EXISTS SurveyAnswers (
+	surveyID			VARCHAR(50)		NOT NULL,
+	questionID			VARCHAR(50)		NOT NULL,
+	value				TINYINT			NOT NULL,
+
+	PRIMARY KEY (surveyID, questionID),
+	FOREIGN KEY (surveyID) REFERENCES Survey(surveyID),
+	FOREIGN KEY (questionID) REFERENCES Questions(questionID),
+	FOREIGN KEY (value) REFERENCES Answers(value)
+);
+-- SELECT * FROM SurveyAnswer;
+-- SELECT * FROM `SignIn`</string>
+		<string>CREATE DATABASE IF NOT EXISTS Survey;
+USE Survey;
+DROP TABLE IF EXISTS SurveyAnswers;
+DROP TABLE IF EXISTS Survey;
+DROP TABLE IF EXISTS SignIn;
+DROP TABLE IF EXISTS Answers;
+DROP TABLE IF EXISTS Questions;
+CREATE TABLE IF NOT EXISTS Questions (
+	questionID			VARCHAR(50)		NOT NULL,
+	questionsText_EN 	VARCHAR(255)	NOT NULL,
+
+	created				TIMESTAMP		NOT NULL 		DEFAULT CURRENT_TIMESTAMP,
+
+	PRIMARY KEY (questionID)
+);
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('3KFSJT4B7L','The color "black" is a safe choice when it comes to clothes.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('MBMNCXEXGV','If I had the choice between an Audi R8 and a Ford Shelby GT500, I would take the Audi.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('8ZP3PPSDWC','I prefer gaming on a console over gaming on a PC.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('88BUB92M6A','I like to watch cat videos on Youtube.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('ZVZG2D2JYF',"Without sports I don't feel comfortable.");
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('WFVR8GWPR4','Large meals for lunch make me tired.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('USXC6B36P7','I prefer holidays in the mountains over holidays on the beach.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('E3ATDJGBAW','Chocolate makes my day.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('XUT7EX893B','I REALLY like to watch cat videos on Youtube.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('4T9VHX7VUU',"Schrödinger's cat is still alive.");
+-- SELECT * FROM Questions;
+-- SELECT * FROM `Questions` ORDER BY `created`
+
+CREATE TABLE IF NOT EXISTS Answers (
+	value				TINYINT			NOT NULL,
+	text 				VARCHAR(255)	NOT NULL,
+
+	PRIMARY KEY (value)
+);
+-- INSERT INTO Answers (value,text) VALUES (0,'UNANSWERED');
+INSERT INTO Answers (value,text) VALUES (1,'strongly disagree');
+INSERT INTO Answers (value,text) VALUES (2,'disagree');
+INSERT INTO Answers (value,text) VALUES (3,'partly agree / disagree');
+INSERT INTO Answers (value,text) VALUES (4,'agree');
+INSERT INTO Answers (value,text) VALUES (5,'strongly agree');
+-- SELECT * FROM Answers;
+-- SELECT * FROM `Answers` ORDER BY `value`
+
+CREATE TABLE IF NOT EXISTS SignIn (
+	username			VARCHAR(50)		NOT NULL,
+	password 			VARCHAR(50)		NOT NULL,
+
+	PRIMARY KEY (username)
+);
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.SKDF7','3ZL4CYDWBL');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.KLDFD','RWXX9DETSM');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.67FDS','2M8CDMTGC5');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.7LKD8','MW7H38T2SE');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.LKD88','G3MNAULVKB');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.ASD9F','8774ZE5E89');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.MNC56','C8UE54QBZP');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.LSNV3','3PE8EDZTV5');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.DDVV2','Y55WPRBVUZ');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.NXCXD','MK4DV8NLPP');
+-- SELECT * FROM SignIn;
+
+CREATE TABLE IF NOT EXISTS Survey (
+	surveyID			VARCHAR(50)		NOT NULL,
+	username			VARCHAR(50)		NOT NULL,
+
+	started				DATETIME 			NULL		DEFAULT '00-00-0000 00:00:00',
+	finished			DATETIME 			NULL		DEFAULT '00-00-0000 00:00:00',
+
+	created				TIMESTAMP		NOT NULL 		DEFAULT CURRENT_TIMESTAMP,
+ 
+	PRIMARY KEY (surveyID),
+	FOREIGN KEY (username) REFERENCES SignIn(username)
+);
+-- INSERT INTO `Survey` SET surveyID = "123", username = "GWSSam.SKDF7"
+-- INSERT INTO `Survey` SET surveyID = '54872ffed76c9', username = '.GWSSam.SKDF7'
+
+-- SELECT * FROM Survey;
+-- SELECT * FROM `Survey` WHERE `username` = 'GWSSam.SKDF7' ORDER BY `created`
+
+
+CREATE TABLE IF NOT EXISTS SurveyAnswers (
+	surveyID			VARCHAR(50)		NOT NULL,
+	questionID			VARCHAR(50)		NOT NULL,
+	value				TINYINT			NOT NULL,
+
+	PRIMARY KEY (surveyID, questionID),
+	FOREIGN KEY (surveyID) REFERENCES Survey(surveyID),
+	FOREIGN KEY (questionID) REFERENCES Questions(questionID),
+	FOREIGN KEY (value) REFERENCES Answers(value)
+);
+-- SELECT * FROM SurveyAnswer;
+-- SELECT * FROM `SignIn`</string>
+		<string>SELECT * FROM `Answers` ORDER BY `value`</string>
+		<string>SELECT * FROM Questions</string>
+		<string>SELECT * FROM `Questions` ORDER BY `created`</string>
+		<string>CREATE DATABASE IF NOT EXISTS Survey;
+USE Survey;
+DROP TABLE IF EXISTS SurveyAnswers;
+DROP TABLE IF EXISTS Survey;
+DROP TABLE IF EXISTS SignIn;
+DROP TABLE IF EXISTS Answers;
+DROP TABLE IF EXISTS Questions;
+CREATE TABLE IF NOT EXISTS Questions (
+	questionID			VARCHAR(50)		NOT NULL,
+	questionsText_EN 	VARCHAR(255)	NOT NULL,
+	
+	created				TIMESTAMP		NOT NULL 		DEFAULT CURRENT_TIMESTAMP,
+
+	PRIMARY KEY (questionID)
+);
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('3KFSJT4B7L','The color "black" is a safe choice when it comes to clothes.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('MBMNCXEXGV','If I had the choice between an Audi R8 and a Ford Shelby GT500, I would take the Audi.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('8ZP3PPSDWC','I prefer gaming on a console over gaming on a PC.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('88BUB92M6A','I like to watch cat videos on Youtube.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('ZVZG2D2JYF',"Without sports I don't feel comfortable.");
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('WFVR8GWPR4','Large meals for lunch make me tired.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('USXC6B36P7','I prefer holidays in the mountains over holidays on the beach.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('E3ATDJGBAW','Chocolate makes my day.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('XUT7EX893B','I REALLY like to watch cat videos on Youtube.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('4T9VHX7VUU',"Schrödinger's cat is still alive.");
+-- SELECT * FROM Questions;
+-- SELECT * FROM `Questions` ORDER BY `created`
+
+CREATE TABLE IF NOT EXISTS Answers (
+	value				TINYINT			NOT NULL,
+	text 				VARCHAR(255)	NOT NULL,
+
+	PRIMARY KEY (value)
+);
+INSERT INTO Answers (value,text) VALUES (0,'UNANSWERED');
+INSERT INTO Answers (value,text) VALUES (1,'strongly disagree');
+INSERT INTO Answers (value,text) VALUES (2,'disagree');
+INSERT INTO Answers (value,text) VALUES (3,'partly agree / disagree');
+INSERT INTO Answers (value,text) VALUES (4,'agree');
+INSERT INTO Answers (value,text) VALUES (5,'strongly agree');
+-- SELECT * FROM Answers;
+
+CREATE TABLE IF NOT EXISTS SignIn (
+	username			VARCHAR(50)		NOT NULL,
+	password 			VARCHAR(50)		NOT NULL,
+
+	PRIMARY KEY (username)
+);
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.SKDF7','3ZL4CYDWBL');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.KLDFD','RWXX9DETSM');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.67FDS','2M8CDMTGC5');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.7LKD8','MW7H38T2SE');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.LKD88','G3MNAULVKB');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.ASD9F','8774ZE5E89');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.MNC56','C8UE54QBZP');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.LSNV3','3PE8EDZTV5');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.DDVV2','Y55WPRBVUZ');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.NXCXD','MK4DV8NLPP');
+-- SELECT * FROM SignIn;
+
+CREATE TABLE IF NOT EXISTS Survey (
+	surveyID			VARCHAR(50)		NOT NULL,
+	username			VARCHAR(50)		NOT NULL,
+
+	started				DATETIME 			NULL		DEFAULT '00-00-0000 00:00:00',
+	finished			DATETIME 			NULL		DEFAULT '00-00-0000 00:00:00',
+
+	created				TIMESTAMP		NOT NULL 		DEFAULT CURRENT_TIMESTAMP,
+ 
+	PRIMARY KEY (surveyID),
+	FOREIGN KEY (username) REFERENCES SignIn(username)
+);
+-- INSERT INTO `Survey` SET surveyID = "123", username = "GWSSam.SKDF7"
+-- INSERT INTO `Survey` SET surveyID = '54872ffed76c9', username = '.GWSSam.SKDF7'
+
+-- SELECT * FROM Survey;
+-- SELECT * FROM `Survey` WHERE `username` = 'GWSSam.SKDF7' ORDER BY `created`
+
+
+CREATE TABLE IF NOT EXISTS SurveyAnswers (
+	surveyID			VARCHAR(50)		NOT NULL,
+	questionID			VARCHAR(50)		NOT NULL,
+	value				TINYINT			NOT NULL,
+
+	PRIMARY KEY (surveyID, questionID),
+	FOREIGN KEY (surveyID) REFERENCES Survey(surveyID),
+	FOREIGN KEY (questionID) REFERENCES Questions(questionID),
+	FOREIGN KEY (value) REFERENCES Answers(value)
+);
+-- SELECT * FROM SurveyAnswer;
+
+
+
+SELECT * FROM `SignIn`</string>
+		<string>SELECT * FROM `Questions`</string>
+		<string>CREATE DATABASE IF NOT EXISTS Survey;
+USE Survey;
+DROP TABLE IF EXISTS SurveyAnswers;
+DROP TABLE IF EXISTS Survey;
+DROP TABLE IF EXISTS SignIn;
+DROP TABLE IF EXISTS Answers;
+DROP TABLE IF EXISTS Questions;
+CREATE TABLE IF NOT EXISTS Questions (
+	questionID			VARCHAR(50)		NOT NULL,
+	questionsText_EN 	VARCHAR(255)	NOT NULL,
+
+	PRIMARY KEY (questionID)
+);
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('3KFSJT4B7L','The color "black" is a safe choice when it comes to clothes.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('MBMNCXEXGV','If I had the choice between an Audi R8 and a Ford Shelby GT500, I would take the Audi.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('8ZP3PPSDWC','I prefer gaming on a console over gaming on a PC.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('88BUB92M6A','I like to watch cat videos on Youtube.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('ZVZG2D2JYF',"Without sports I don't feel comfortable.");
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('WFVR8GWPR4','Large meals for lunch make me tired.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('USXC6B36P7','I prefer holidays in the mountains over holidays on the beach.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('E3ATDJGBAW','Chocolate makes my day.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('XUT7EX893B','I REALLY like to watch cat videos on Youtube.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('4T9VHX7VUU',"Schrödinger's cat is still alive.");
+-- SELECT * FROM Questions;
+
+CREATE TABLE IF NOT EXISTS Answers (
+	value				TINYINT			NOT NULL,
+	text 				VARCHAR(255)	NOT NULL,
+
+	PRIMARY KEY (value)
+);
+INSERT INTO Answers (value,text) VALUES (0,'UNANSWERED');
+INSERT INTO Answers (value,text) VALUES (1,'strongly disagree');
+INSERT INTO Answers (value,text) VALUES (2,'disagree');
+INSERT INTO Answers (value,text) VALUES (3,'partly agree / disagree');
+INSERT INTO Answers (value,text) VALUES (4,'agree');
+INSERT INTO Answers (value,text) VALUES (5,'strongly agree');
+-- SELECT * FROM Answers;
+
+CREATE TABLE IF NOT EXISTS SignIn (
+	username			VARCHAR(50)		NOT NULL,
+	password 			VARCHAR(50)		NOT NULL,
+
+	PRIMARY KEY (username)
+);
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.SKDF7','3ZL4CYDWBL');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.KLDFD','RWXX9DETSM');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.67FDS','2M8CDMTGC5');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.7LKD8','MW7H38T2SE');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.LKD88','G3MNAULVKB');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.ASD9F','8774ZE5E89');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.MNC56','C8UE54QBZP');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.LSNV3','3PE8EDZTV5');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.DDVV2','Y55WPRBVUZ');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.NXCXD','MK4DV8NLPP');
+-- SELECT * FROM SignIn;
+
+CREATE TABLE IF NOT EXISTS Survey (
+	surveyID			VARCHAR(50)		NOT NULL,
+	username			VARCHAR(50)		NOT NULL,
+
+	started				DATETIME 			NULL		DEFAULT '00-00-0000 00:00:00',
+	finished			DATETIME 			NULL		DEFAULT '00-00-0000 00:00:00',
+
+	created				TIMESTAMP		NOT NULL 		DEFAULT CURRENT_TIMESTAMP,
+ 
+	PRIMARY KEY (surveyID),
+	FOREIGN KEY (username) REFERENCES SignIn(username)
+);
+-- INSERT INTO `Survey` SET surveyID = "123", username = "GWSSam.SKDF7"
+-- INSERT INTO `Survey` SET surveyID = '54872ffed76c9', username = '.GWSSam.SKDF7'
+
+-- SELECT * FROM Survey;
+-- SELECT * FROM `Survey` WHERE `username` = 'GWSSam.SKDF7' ORDER BY `created`
+
+
+CREATE TABLE IF NOT EXISTS SurveyAnswers (
+	surveyID			VARCHAR(50)		NOT NULL,
+	questionID			VARCHAR(50)		NOT NULL,
+	value				TINYINT			NOT NULL,
+
+	PRIMARY KEY (surveyID, questionID),
+	FOREIGN KEY (surveyID) REFERENCES Survey(surveyID),
+	FOREIGN KEY (questionID) REFERENCES Questions(questionID),
+	FOREIGN KEY (value) REFERENCES Answers(value)
+);
+-- SELECT * FROM SurveyAnswer;
+
+
+
+SELECT * FROM `SignIn`</string>
+		<string>DROP TABLE IF EXISTS SurveyAnswers</string>
+		<string>CREATE DATABASE IF NOT EXISTS Survey;
+USE Survey;
+DROP TABLE IF EXISTS SurveyAnswer;
+DROP TABLE IF EXISTS Survey;
+DROP TABLE IF EXISTS SignIn;
+DROP TABLE IF EXISTS Answers;
+DROP TABLE IF EXISTS Questions;
+CREATE TABLE IF NOT EXISTS Questions (
+	questionID			VARCHAR(50)		NOT NULL,
+	questionsText_EN 	VARCHAR(255)	NOT NULL,
+
+	PRIMARY KEY (questionID)
+);
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('3KFSJT4B7L','The color "black" is a safe choice when it comes to clothes.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('MBMNCXEXGV','If I had the choice between an Audi R8 and a Ford Shelby GT500, I would take the Audi.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('8ZP3PPSDWC','I prefer gaming on a console over gaming on a PC.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('88BUB92M6A','I like to watch cat videos on Youtube.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('ZVZG2D2JYF',"Without sports I don't feel comfortable.");
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('WFVR8GWPR4','Large meals for lunch make me tired.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('USXC6B36P7','I prefer holidays in the mountains over holidays on the beach.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('E3ATDJGBAW','Chocolate makes my day.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('XUT7EX893B','I REALLY like to watch cat videos on Youtube.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('4T9VHX7VUU',"Schrödinger's cat is still alive.");
+-- SELECT * FROM Questions;
+
+CREATE TABLE IF NOT EXISTS Answers (
+	value				TINYINT			NOT NULL,
+	text 				VARCHAR(255)	NOT NULL,
+
+	PRIMARY KEY (value)
+);
+INSERT INTO Answers (value,text) VALUES (0,'UNANSWERED');
+INSERT INTO Answers (value,text) VALUES (1,'strongly disagree');
+INSERT INTO Answers (value,text) VALUES (2,'disagree');
+INSERT INTO Answers (value,text) VALUES (3,'partly agree / disagree');
+INSERT INTO Answers (value,text) VALUES (4,'agree');
+INSERT INTO Answers (value,text) VALUES (5,'strongly agree');
+-- SELECT * FROM Answers;
+
+CREATE TABLE IF NOT EXISTS SignIn (
+	username			VARCHAR(50)		NOT NULL,
+	password 			VARCHAR(50)		NOT NULL,
+
+	PRIMARY KEY (username)
+);
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.SKDF7','3ZL4CYDWBL');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.KLDFD','RWXX9DETSM');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.67FDS','2M8CDMTGC5');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.7LKD8','MW7H38T2SE');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.LKD88','G3MNAULVKB');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.ASD9F','8774ZE5E89');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.MNC56','C8UE54QBZP');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.LSNV3','3PE8EDZTV5');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.DDVV2','Y55WPRBVUZ');
+INSERT INTO SignIn (username,password) VALUES ('GWSSam.NXCXD','MK4DV8NLPP');
+-- SELECT * FROM SignIn;
+
+CREATE TABLE IF NOT EXISTS Survey (
+	surveyID			VARCHAR(50)		NOT NULL,
+	username			VARCHAR(50)		NOT NULL,
+
+	started				DATETIME 			NULL		DEFAULT '00-00-0000 00:00:00',
+	finished			DATETIME 			NULL		DEFAULT '00-00-0000 00:00:00',
+
+	created				TIMESTAMP		NOT NULL 		DEFAULT CURRENT_TIMESTAMP,
+ 
+	PRIMARY KEY (surveyID),
+	FOREIGN KEY (username) REFERENCES SignIn(username)
+);
+-- INSERT INTO `Survey` SET surveyID = "123", username = "GWSSam.SKDF7"
+-- INSERT INTO `Survey` SET surveyID = '54872ffed76c9', username = '.GWSSam.SKDF7'
+
+-- SELECT * FROM Survey;
+-- SELECT * FROM `Survey` WHERE `username` = 'GWSSam.SKDF7' ORDER BY `created`
+
+
+CREATE TABLE IF NOT EXISTS SurveyAnswers (
+	surveyID			VARCHAR(50)		NOT NULL,
+	questionID			VARCHAR(50)		NOT NULL,
+	value				TINYINT			NOT NULL,
+
+	PRIMARY KEY (surveyID, questionID),
+	FOREIGN KEY (surveyID) REFERENCES Survey(surveyID),
+	FOREIGN KEY (questionID) REFERENCES Questions(questionID),
+	FOREIGN KEY (value) REFERENCES Answers(value)
+);
+-- SELECT * FROM SurveyAnswer;
+
+
+
+SELECT * FROM `SignIn`</string>
+	</array>
+	<key>rdbms_type</key>
+	<string>mysql</string>
+	<key>rdbms_version</key>
+	<string>5.5.38-0ubuntu0.12.04.1</string>
+	<key>version</key>
+	<integer>1</integer>
+</dict>
+</plist>

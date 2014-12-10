@@ -1,0 +1,1 @@
+{"virtualbox":{"/var/www":{"mount_options":["dmode=777","fmode=666"],"guestpath":"/var/www","hostpath":"/Users/ernst/Desktop/PROJECTS/active/survey/src","disabled":false},"/vagrant":{"guestpath":"/vagrant","hostpath":"/Users/ernst/Desktop/PROJECTS/active/survey","disabled":false}}}

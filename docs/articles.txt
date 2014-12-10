@@ -1,0 +1,44 @@
+
+# -------------------------------------------------------------------------------------------------
+# VAGRANT
+# -------------------------------------------------------------------------------------------------
+
+	Introducing Scotch Box – A Vagrant LAMP Stack That Just Works
+		
+		scotch.io/bar-talk/introducing-scotch-box-a-vagrant-lamp-stack-that-just-works
+		scotch.io/tutorials/get-vagrant-up-and-running-in-no-time
+
+		box.scotch.io
+			github.com/scotch-io/scotch-box
+		___________________________________________________________________________________________
+		From a Desktop Client
+			sequelpro.com
+
+			[Standard][Socket][SSH <==]
+				  Name: scotchbox
+			MySQL Host:	127.0.0.1
+			  Username: root
+			  Password: root
+			  Database: (optional)
+			  	  Port: 3306
+			  SSH Host: 192.168.33.10
+			  SSH User: vagrant
+			  SSH Pass: vagrant
+			  SSH Port: (optional)
+		___________________________________________________________________________________________
+		Setting up a hostname
+
+			sudo subl /etc/hosts
+
+			http://scotchbox
+
+# -------------------------------------------------------------------------------------------------
+# RELATED TUTORIALS/MATERIAL
+# -------------------------------------------------------------------------------------------------
+
+	The New Boston
+		thenewboston.com/videos.php
+
+# -------------------------------------------------------------------------------------------------
+# END
+# -------------------------------------------------------------------------------------------------
