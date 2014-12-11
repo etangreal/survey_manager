@@ -1,10 +1,10 @@
 <?php
-	include_once('../resources/db.php');
+
 	$username = $_GET['username'];
 	schedule_survey($username);
 
 	header('Location: surveys.php?username='.$username);
-	die();
+	exit();
 ?>
 
 <html>
