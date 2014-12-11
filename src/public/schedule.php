@@ -1,4 +1,5 @@
 <?php
+	include 'core/init.php';
 
 	$username = $_GET['username'];
 	schedule_survey($username);

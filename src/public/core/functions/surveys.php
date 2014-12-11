@@ -118,13 +118,14 @@
 	// --------------------------------------------------------------------------------------------
 
 	function schedule_survey($username) {
+		global $conn;
 		//ToDo: Check $username exists and is valid ...
 
 		$query = "INSERT INTO `Survey` SET 
 					   surveyID = '".uniqid()."'".
 					", username = '".$username."'";
 
-		$query = mysqli_query(con(),$query);
+		$query = mysqli_query($conn,$query);
 	}
 
 	// --------------------------------------------------------------------------------------------
