@@ -132,6 +132,7 @@ nav ul li a.last {
 
 aside {
 	width: 260px;
+	min-height: 500px;
 	float: right;
 	border-left: 1px dashed #aaa;
 	padding-left: 15px;

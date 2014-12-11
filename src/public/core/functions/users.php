@@ -1,8 +1,25 @@
 <?php
 
-	function is_admin() {
-		return ( isset($user_data['level']) && ($user_data['level'] == 1) );
+	// --------------------------------------------------------------------------------------------
+
+	function logged_in() {
+		return isset($_SESSION['username']);
 	}
+
+	// --------------------------------------------------------------------------------------------
+
+	function redirect_if_unauthorized_user() {
+		if ( ! logged_in() )
+			redirect_to_index();
+	}
+
+	// --------------------------------------------------------------------------------------------
+
+	function user_active() {
+		return true;
+	}
+
+	// --------------------------------------------------------------------------------------------
 
 	function user_data($username) {
 		global $conn;
@@ -28,9 +45,7 @@
 		return $row;
 	}
 
-	function logged_in() {
-		return isset($_SESSION['username']);
-	}
+	// --------------------------------------------------------------------------------------------
 
 	function user_exists($username) {
 		global $conn;
@@ -46,6 +61,8 @@
 
 		return ($count == 1);
 	}
+
+	// --------------------------------------------------------------------------------------------
 
 	function login($username, $password) {
 		global $conn;
@@ -65,10 +82,24 @@
 		$count = $row['COUNT(`username`)'];
 		return ($count == 1);
 
-	}//login
-
-	function user_active($username) {
-		return true;
 	}
+
+	// --------------------------------------------------------------------------------------------
+
+	function get_users() {
+		global $conn;
+
+		$users = array();
+
+		$query = "SELECT * FROM `SignIn`";
+		$query = mysqli_query($conn,$query);
+
+		while ($row = mysqli_fetch_assoc($query))
+			$users[] = $row;
+
+		return $users;
+	}
+
+	// --------------------------------------------------------------------------------------------
 
 ?>

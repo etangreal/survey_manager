@@ -28,7 +28,12 @@
 
 			} else { //login successfull!
 				$_SESSION['username'] = $username;
-				header('Location: index.php');
+
+				if (strtoupper($username) == 'ADMIN')
+					header('Location: admin.php');
+				else
+					header('Location: surveys.php');
+
 				exit();
 			}
 

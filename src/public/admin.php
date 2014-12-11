@@ -1,25 +1,20 @@
+<?php 
+	include 'core/init.php';
+	include 'includes/overall/header.php';
 
-<?php
-	include_once('../resources/db.php');
+	redirect_if_unauthorized_admin();
+
 	$users = get_users();
 ?>
 
-<html>
-	<head>
-	</head>
-	<body>
-		<nav>
-			<ul>
-				<li><a href='login.php'> Login </a></li>
-			</ul>
-		</nav>
+	<h1> Users </h1>
+	<ul><?php
+		foreach( $users as $user ) {
+			$username = $user['username'];
+			echo '<li><a href="surveys.php?username='.$username.'">'.$username.'</a></li>';
+		}
+	?></ul>
 
-		<h1> Users </h1>
-		<ul><?php
-			foreach( $users as $user ) {
-				$username = $user['username'];
-				echo '<li><a href="surveys.php?username='.$username.'">'.$username.'</a></li>';
-			}
-		?></ul>
-	</body>
-</html>
+<?php
+	include 'includes/overall/footer.php'; 
+?>

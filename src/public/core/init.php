@@ -5,6 +5,8 @@
 	require 'database/connect.php';
 	require 'functions/general.php';
 	require 'functions/users.php';
+	require 'functions/admin.php';
+	require 'functions/surveys.php';
 
 	$user_data 	= array();
 	$errors 	= array();

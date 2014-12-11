@@ -3,6 +3,11 @@
 	
 }
 
+#controls {
+	width: 100%;
+	text-align: center;
+}
+
 .question {
 	display: none;
 }

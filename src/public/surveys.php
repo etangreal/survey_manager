@@ -1,36 +1,31 @@
-
 <?php
-	include_once('../resources/db.php');
-	$username = $_GET['username'];
-	$surveys = get_surveys($username);
+	include 'core/init.php';
+
+	redirect_if_unauthorized_user();
+	redirect_if_unmatched_user();
+
+	$username = (isset($_GET['username'])) ? $_GET['username'] : $user_data['username'];
+	$surveys  = get_surveys($username);
+
+	include 'includes/overall/header.php';
 ?>
 
-<html>
-	<head>
-	</head>
-	<body>
-		<nav>
-			<ul>
-				<li><a href='index.php'> Index </a></li>
-			</ul>
-		</nav>
+	<h1> Surveys for <?php echo $username ?> </h1>
+	<ul>
+		<?php
+			if (is_admin()) 
+				echo '<li>[ <a href="schedule.php?username='.$username.'">scedule a new survey</a> ]</il>';
 
-		<h1> Surveys for <?php echo $username ?> </h1>
-		<ul>
-			<li>[ <a href="schedule.php?username=<?php echo $username?>">scedule a new survey</a> ]</il>
-			<?php
-				if (empty($surveys)) {
-					echo '<li> no surveys scheduled </li>';
+			if (empty($surveys)) {
+				echo '<li> no surveys scheduled </li>';
 
-				} else foreach( $surveys as $survey ) {
-					$serveyID = $survey['surveyID'];
-					$username = $survey['username'];
+			} else foreach( $surveys as $survey ) {
+				$serveyID = $survey['surveyID'];
+				echo '<li><a href="survey.php?surveyID='.$serveyID.'&username='.$username.'">SurveyID: '.$serveyID.'</a></li>';
+			}
+		?>
+	</ul>
 
-					echo '<li><a href="survey.php?'.'surveyID='.$serveyID.'&username='.$username.'">'.
-							'SurveyID: '.$serveyID.
-						 	//' (Username: '.$username.') '.
-						 '</a></li>';
-				}
-		?></ul>
-	</body>
-</html>
+<?php
+	include 'includes/overall/footer.php'; 
+?>

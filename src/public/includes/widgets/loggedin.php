@@ -9,12 +9,12 @@
 		exit();
 	}
 
-	$welcome = "Hi ".$user_data['username']."!";
+	$welcome = "Welcome ".$user_data['username'];
 
 	$links	 = "<ul>";
 	
 	if ($user_data['level'] == 1) //i.e. if the user is admin
-		$links 	.= plus('index.php','Admin');
+		$links 	.= plus('admin.php','Admin');
 
 	$links 	.= plus('logout.php','Logout');
 	$links	.= "</ul>";
