@@ -97,14 +97,14 @@ CREATE TABLE IF NOT EXISTS Questions (
 
 INSERT INTO Questions (questionID,questionsText_EN) VALUES ('3KFSJT4B7L','The color "black" is a safe choice when it comes to clothes.');
 INSERT INTO Questions (questionID,questionsText_EN) VALUES ('MBMNCXEXGV','If I had the choice between an Audi R8 and a Ford Shelby GT500, I would take the Audi.');
-/* INSERT INTO Questions (questionID,questionsText_EN) VALUES ('8ZP3PPSDWC','I prefer gaming on a console over gaming on a PC.');
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('8ZP3PPSDWC','I prefer gaming on a console over gaming on a PC.');
 INSERT INTO Questions (questionID,questionsText_EN) VALUES ('88BUB92M6A','I like to watch cat videos on Youtube.');
 INSERT INTO Questions (questionID,questionsText_EN) VALUES ('ZVZG2D2JYF',"Without sports I don't feel comfortable.");
 INSERT INTO Questions (questionID,questionsText_EN) VALUES ('WFVR8GWPR4','Large meals for lunch make me tired.');
 INSERT INTO Questions (questionID,questionsText_EN) VALUES ('USXC6B36P7','I prefer holidays in the mountains over holidays on the beach.');
 INSERT INTO Questions (questionID,questionsText_EN) VALUES ('E3ATDJGBAW','Chocolate makes my day.');
 INSERT INTO Questions (questionID,questionsText_EN) VALUES ('XUT7EX893B','I REALLY like to watch cat videos on Youtube.');
-INSERT INTO Questions (questionID,questionsText_EN) VALUES ('4T9VHX7VUU',"Schrödinger's cat is still alive."); */
+INSERT INTO Questions (questionID,questionsText_EN) VALUES ('4T9VHX7VUU',"Schrödinger's cat is still alive.");
 
 -- SELECT * FROM Questions;
 -- SELECT * FROM `Questions` ORDER BY `created`
